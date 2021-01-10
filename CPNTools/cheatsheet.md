@@ -63,6 +63,8 @@ val l = [1,2,3];
 [1,2,3]@[4,5,6]
 ```
 
+
+
 ### Functions
 lambda expressions
 ```
@@ -184,6 +186,30 @@ in
     f(4+x)
 end
 ```
+
+### Modules
+
+#### Structures
+A structures is an encapsulation,named,collection of declaration 
+
+```
+structure Ford
+struct 
+    type car ={make:string , built:int}
+    val first = {make="Ford" , built=1904}
+    fun mutate = ({make , built}:car) year = {make=make , built=year}
+    fun built = ({built,...}:car) = built
+    fun show (c) = if built< built first then " - "
+                    else "(generic Ford)"
+
+```
+
+#### Signature
+A signature is a collection of specification for module components types,values,structures
+
+#### Functors
+
+#### Type abstraction
 
 
 
