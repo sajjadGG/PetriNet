@@ -2,30 +2,42 @@
 standard ML is functional programming language
 strong typed 
 ## Table of content
-- variable declaration and standard data types
-- functions
-- list comprehensions and operations
+- Variable declaration and standard data types
+- Operators
+- Functions
+- List comprehensions and operations
+- Records
+- Patterns
+- Local declaration
 - Examples
+- Resources
 
 
 ### Notation 
 result of some of the codes are given using syntax
 val it = 2.0 : real
 under the command
+or by using 
+=> and variable names in the last command
 
 
 
-### variable delcaration
+### Variable Delcaration
+SML have Integers , reals , booleans , Strings , Lists , Tuples , Records , ...
+
+value binding examples
 ```
-val x = 10; int
-val y = 1.0; real
-val z = "abc"; string
-val u = #"a"; char
+val x = 10; 
+val y = 1.0; 
+val z = "abc"; 
+val u = #"a"; 
 val pair = (1,"abc")
 val triple = (1,true,2.0)
 
 ```
-### operators
+and comments can be written inside (* comment here *)
+
+### Operators
 string concatanations using ^^
 ```
 "abc"^^"def";
@@ -40,8 +52,18 @@ val it = 2.0 : real
 val (x,y) = pair
 ```
 
+:: : add an element to a list
+```
+val l = [1,2,3];
+5::l
+```
 
-### functions
+@ : concatenate two list
+```
+[1,2,3]@[4,5,6]
+```
+
+### Functions
 lambda expressions
 ```
 fn x => x+1
@@ -52,10 +74,24 @@ invoking a function
 twice y;
 ```
 functions are defined explicitly using keyword **fun**
+function binding examples
 ```
 fun fac n = if (n=0) then 1 else n*(fac(n-1));
 ```
+polymorphic functions
+```
+fun mklist x = [x]
+```
+function as parameter
+```
+fun map f [] = [] | map f (h::t) = (f,h)::(map f t);
 
+map (fn x=> x+1) [1,2,3]
+val it = [2,3,4]
+
+map 
+
+```
 
 ### List 
 List constuction
@@ -78,6 +114,38 @@ tl l
 val it = [2,3] : int list
 ```
 
+### Records
+
+```
+val car = {make="Ford" , year = 1910};
+val mk = #make car;
+val yr = #year car;
+
+```
+
+### Patterns
+a form to decompose compund values, commanly used in value bindings and function arguments
+
+```
+val list = [1,2,3];
+val fst::rest = list
+```
+fst = 1 , rest = [2,3]
+
+
+### Local declaration
+let <decl> in <exp> end
+```
+let val x=3
+    fun f y = (y , x*y)
+in
+    f(4+x)
+end
+```
+
+
+
+
 ### Examples
 function append two list
 ```
@@ -87,3 +155,6 @@ fun app nil l = l |
 app [1,2,3] [4,5,6]
 val it = [1,2,3,4,5,6]
 ```
+
+### Resources
+[Waterloo](https://www.cs.princeton.edu/courses/archive/fall08/cos441/notes/lect-SMLNJ.pdf)
