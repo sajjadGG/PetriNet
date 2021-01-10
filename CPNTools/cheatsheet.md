@@ -132,6 +132,48 @@ val fst::rest = list
 ```
 fst = 1 , rest = [2,3]
 
+```
+val list = [1,2,3];
+val [x,_,y] = list
+```
+x=1 , y=3
+
+match rule : pat => exp
+when a match is applied to a value v , we try rules from left to right, looking for the first pattern matches v.we then bind the variable
+in the pattern and evaluate the expression
+
+pat1 => exp1 | ... | patn => expn
+
+**case** exp **of** match
+
+fn match
+
+fun f pat1 = exp1 | f pat2 =  exp2 | ... | f patn = expn
+
+
+```
+fun length l = (case l 
+                of [] => 0 
+                | [a] => 1
+                | _::r => 1 + length r
+                (* end case *))
+
+```
+same function using another notation
+```
+fun length [] = 0 
+    | length [a] = 1
+    | length (_ :: r) = 1 + length r
+
+```
+more examples 
+```
+fun even 0 = true
+    | even n = odd(n-1)
+
+fun odd 0 = false
+    | odd n = even(n-1)
+```
 
 ### Local declaration
 let <decl> in <exp> end
@@ -158,3 +200,4 @@ val it = [1,2,3,4,5,6]
 
 ### Resources
 [Waterloo](https://www.cs.princeton.edu/courses/archive/fall08/cos441/notes/lect-SMLNJ.pdf)
+[uchicago](https://www.classes.cs.uchicago.edu/archive/2007/winter/22610-1/docs/sml-tutorial.pdf)
